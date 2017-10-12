@@ -9,6 +9,6 @@ if [ -z "$CMD" ]; then
 else
   echo "Beginning remote install"
   mkdir -p "$HOME/dotfiles" && \
-  eval "$CMD https://github.com/louisscruz/dotfiles/tarball/master | tar -xzv -C ~/.dotfiles --strip-components=1 --exclude='{.gitignore}'"
-  . "$HOME/dotfiles/setup.sh"
+  eval "$CMD https://github.com/louisscruz/dotfiles/tarball/master | tar -xzv -C ~/dotfiles --strip-components=1 --exclude='{.gitignore}'"
+  "$HOME/dotfiles/setup.sh"
 fi
