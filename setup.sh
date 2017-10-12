@@ -19,6 +19,15 @@ alert_installed() {
 
 # Installation methods
 
+ensure_bash_profile() {
+  if [[ ! -f ~/.bash_profile ]]; then
+    touch ~/.bash_profile
+    echo "~/.bash_profile added"
+  else
+    echo "~/.bash_profile already existed"
+  fi
+}
+
 install_iterm() {
   local app_name=iTerm check_sum=720eccece544ae8765f91c4c0348bb2819e47a2b794ce0adabc14934c00fee38
   attempting_install iTerm
@@ -150,6 +159,7 @@ install_atom_packages() {
 
 echo "Dotfiles are now running..."
 
+ensure_bash_profile
 install_iterm
 install_homebrew
 install_git
