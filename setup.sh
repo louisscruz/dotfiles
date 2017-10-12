@@ -19,6 +19,10 @@ alert_installed() {
 
 # Installation methods
 
+accept_xcode_license() {
+  sudo xcodebuild -license accept
+}
+
 ensure_bash_profile() {
   if [[ ! -f ~/.bash_profile ]]; then
     touch ~/.bash_profile
@@ -187,6 +191,7 @@ install_atom_packages() {
 
 echo "Dotfiles are now running..."
 
+accept_xcode_license
 ensure_bash_profile
 
 install_iterm
