@@ -67,8 +67,18 @@ install_git() {
   else
     brew install git
     git --version
-    alert_installed git
+    alert_installed Git
     config_git
+  fi
+}
+
+install_atom() {
+  attempting_install Atom
+  if which atom >/dev/null; then
+    already_installed Atom
+  else
+    curl -fsSLo ~/Downloads/atom_download.zip https://github.com/atom/atom/releases/download/v1.21.0/atom-mac.zip
+    unzip -d ~/Applications/ ~/Downloads/atom_download.zip
   fi
 }
 
@@ -81,3 +91,4 @@ echo "Dotfiles are now running..."
 install_iterm
 install_homebrew
 install_git
+install_atom
