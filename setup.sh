@@ -121,11 +121,13 @@ install_rbenv() {
     already_installed rbenv
   else
     brew install rbenv
-    rbenv init
+    alert_installed rbenv
+  fi
+
+  if [[ ! -f ~/.rbenv ]]; then
     echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
     source ~/.bash_profile
     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-    alert_installed rbenv
   fi
 
   rbenv install 2.4.1
