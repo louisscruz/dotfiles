@@ -192,7 +192,7 @@ install_atom_packages() {
 
 echo "Dotfiles are now running..."
 
-ensure_bash_profile
+ensure_bashrc
 source ~/.bashrc
 
 ensure_bash_profile
