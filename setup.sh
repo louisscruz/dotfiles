@@ -131,7 +131,7 @@ install_rbenv() {
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 
   if [[ ! -f ~/.rbenv ]]; then
-    echo "if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi" >> ~/.bash_profile
+    echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
     source ~/.bash_profile
     curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
   fi
