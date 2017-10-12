@@ -146,11 +146,18 @@ install_eslint() {
   alert_installed ESLint
 }
 
+install_react() {
+  attempting_install Atom\ React
+  apm install react
+  alert_installed Atom\ React
+}
+
 install_atom_packages() {
   attempting_install Atom\ Packages
   install_rubocop
   install_linter
   install_eslint
+  install_react
 }
 
 # =========================
@@ -160,6 +167,8 @@ install_atom_packages() {
 echo "Dotfiles are now running..."
 
 ensure_bash_profile
+source ~/.bash_profile
+
 install_iterm
 install_homebrew
 install_git
