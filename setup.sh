@@ -19,6 +19,15 @@ alert_installed() {
 
 # Installation methods
 
+ensure_bashrc() {
+  if [[ ! -f ~/.bashrc ]]; then
+    touch ~/.bashrc
+    echo "~/.bashrc added"
+  else
+    echo "~/.bashrc already existed"
+  fi
+}
+
 ensure_bash_profile() {
   if [[ ! -f ~/.bash_profile ]]; then
     touch ~/.bash_profile
@@ -182,6 +191,9 @@ install_atom_packages() {
 # =========================
 
 echo "Dotfiles are now running..."
+
+ensure_bash_profile
+source ~/.bashrc
 
 ensure_bash_profile
 source ~/.bash_profile
