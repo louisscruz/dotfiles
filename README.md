@@ -5,7 +5,9 @@
 ### If You Don't Yet Have Git
 
 ```
-curl -Lk https://github.com/louisscruz/dotfiles/archive/master.zip -o ~/dotfiles
+curl -Lk https://github.com/louisscruz/dotfiles/archive/master.zip -o ~/dotfiles.zip
+unzip -d ~/ ~/dotfiles.zip
+mv dotfiles-master dotfiles
 cd ~/dotfiles
 chmod +x setup.sh
 ./setup.sh
