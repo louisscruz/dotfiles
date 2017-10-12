@@ -4,7 +4,7 @@
 
 ### If You Don't Yet Have Git
 
-#### If You Want to Use the Remove Script
+#### If You Want to Use the Remote Script
 
 ```
 sh -c "`curl -fsSL https://raw.github.com/louisscruz/dotfiles/master/remote_setup.sh`"
