@@ -141,7 +141,7 @@ install_linter() {
 }
 
 install_eslint() {
-  attempt_install ESLint
+  attempting_install ESLint
   apm install linter-eslint
   alert_installed ESLint
 }
