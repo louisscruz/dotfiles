@@ -23,6 +23,10 @@ accept_xcode_license() {
   sudo xcodebuild -license accept
 }
 
+ensure_command_line_tools() {
+  xcode-select --install
+}
+
 ensure_bash_profile() {
   if [[ ! -f ~/.bash_profile ]]; then
     touch ~/.bash_profile
@@ -131,7 +135,7 @@ install_rbenv() {
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 
   if [[ ! -f ~/.rbenv ]]; then
-    rbenv -init
+    rbenv init
   fi
 
   source ~/.bash_profile
@@ -194,6 +198,7 @@ install_atom_packages() {
 echo "Dotfiles are now running..."
 
 accept_xcode_license
+ensure_command_line_tools
 ensure_bash_profile
 
 install_iterm
