@@ -47,6 +47,7 @@ install_homebrew() {
     already_installed Homebrew
   else
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    alert_installed Homebrew
   fi
 }
 
@@ -61,14 +62,35 @@ config_git() {
 }
 
 install_git() {
-  attempting_install git
+  attempting_install Git
   if which git >/dev/null; then
-    already_installed git
+    already_installed Git
   else
     brew install git
     git --version
     alert_installed Git
     config_git
+  fi
+}
+
+install_nvm() {
+  attempting_install NVM
+  if which nvm >/dev/null; then
+    already_installed NVM
+  else
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
+    alert_installed NVM
+  fi
+}
+
+install_node() {
+  install_nvm
+  if which node >/dev/null; then
+    already_installed Node
+  else
+    nvm install node
+    nvm use node
+    alert_installed Node
   fi
 }
 
@@ -82,6 +104,45 @@ install_atom() {
   fi
 }
 
+install_bundler() {
+  attempting_install Bundler
+  if which bundle >/dev/null; then
+    already_installed Bundler
+  else
+    gem install bundler
+    alert_installed Bundler
+  fi
+}
+
+install_rubocop() {
+  attempting_install RuboCop
+  if which rubocop >/dev/null; then
+    already_installed RuboCop
+  else
+    gem install rubocop
+    alert_installed RuboCop
+  fi
+}
+
+install_linter() {
+  attempting_install Linter
+  apm install linter
+  alert_installed Linter
+}
+
+install_eslint() {
+  attempt_install ESLint
+  apm install linter-eslint
+  alert_installed ESLint
+}
+
+install_atom_packages() {
+  attempting_install Atom\ Packages
+  install_rubocop
+  install_linter
+  install_eslint
+}
+
 # =========================
 # Beginning of installation
 # =========================
@@ -91,4 +152,7 @@ echo "Dotfiles are now running..."
 install_iterm
 install_homebrew
 install_git
+install_bundler
+install_node
 install_atom
+install_atom_packages
