@@ -115,6 +115,23 @@ install_atom() {
   fi
 }
 
+install_rbenv() {
+  attempting_install rbenv
+  if which rbenv >/dev/null; then
+    already_installed rbenv
+  else
+    brew install rbenv
+    rbenv init
+    source ~/.bash_profile
+    curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+    alert_installed rbenv
+  fi
+
+  rbenv install 2.4.1
+  rbenv install mruby-1.2.0
+  rbenv global 2.4.1
+}
+
 install_bundler() {
   attempting_install Bundler
   if which bundle >/dev/null; then
@@ -123,23 +140,6 @@ install_bundler() {
     gem install bundler
     alert_installed Bundler
   fi
-}
-
-install_rbenv() {
-  attempting_install rbenv
-  if which rbenv >/dev/null; then
-    already_installed rbenv
-  else
-    brew install rbenv
-    rbenv init
-    source ~/.bashrc
-    curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-    alert_installed rbenv
-  fi
-
-  rbenv install 2.4.1
-  rbenv install mruby-1.2.0
-  rbenv global 2.4.1
 }
 
 install_rubocop() {
@@ -188,8 +188,8 @@ ensure_bash_profile
 
 install_iterm
 install_homebrew
-install_bundler
 install_rbenv
+install_bundler
 install_node
 install_atom
 install_atom_packages
