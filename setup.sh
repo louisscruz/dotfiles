@@ -131,10 +131,10 @@ install_rbenv() {
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
 
   if [[ ! -f ~/.rbenv ]]; then
-    echo 'if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi' >> ~/.bash_profile
-    source ~/.bash_profile
-    curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+    rbenv -init
   fi
+
+  source ~/.bash_profile
 
   rbenv install 2.4.1
   rbenv install mruby-1.2.0
